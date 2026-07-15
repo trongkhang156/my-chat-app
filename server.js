@@ -11,5 +11,6 @@ io.on('connection', (socket) => {
     });
 });
 
+// Đừng gán cứng 3003, hãy để hệ thống của Render tự cấp
 const PORT = process.env.PORT || 3003;
-http.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+http.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
