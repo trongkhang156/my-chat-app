@@ -93,6 +93,12 @@
         appendMessage(data);
     });
 });
+// Đảm bảo đoạn này nằm trong <script> ở cuối file index.html
+document.getElementById('input').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        send();
+    }
+});
     </script>
 </body>
 </html>
