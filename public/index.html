@@ -85,7 +85,14 @@
         }
 
         socket.on('chat message', appendMessage);
-        socket.on('load history', (messages) => messages.forEach(appendMessage));
+        socket.on('load history', (messages) => {
+    const msgBox = document.getElementById('messages');
+    msgBox.innerHTML = ''; // XÓA SẠCH danh sách cũ trước khi load cái mới
+    
+    messages.forEach(data => {
+        appendMessage(data);
+    });
+});
     </script>
 </body>
 </html>
