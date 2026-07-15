@@ -87,6 +87,24 @@
                 }
             }
         });
+        socket.on('load history', (messages) => {
+    messages.forEach(data => {
+        const msgBox = document.getElementById('messages');
+        const div = document.createElement('div');
+        div.className = 'msg ' + (data.id === myId ? 'my-msg' : 'other-msg');
+        
+        if (data.image) {
+            div.innerHTML = `<img src="${data.image}" class="img-msg">`;
+        } else if (data.file) {
+            div.innerHTML = `<a href="${data.file}" download="${data.fileName}" class="file-msg">📎 ${data.fileName}</a>`;
+        } else {
+            div.textContent = data.text;
+        }
+        
+        msgBox.appendChild(div);
+        msgBox.scrollTop = msgBox.scrollHeight;
+    });
+});
     </script>
 </body>
 </html>
